@@ -1,6 +1,6 @@
 <template>
     <div id="singleproduct">
-            <!--================Home Banner Area =================-->
+    <!--================Home Banner Area =================-->
     <section class="banner_area">
       <div class="banner_inner d-flex align-items-center">
         <div class="container">
@@ -12,8 +12,8 @@
               <p>Very us move be blessed multiply night</p>
             </div>
             <div class="page_link">
-              <a href="index.html">Home</a>
-              <a href="single-product.html">Product Details</a>
+              <a href="#">Home</a>
+              <a href="#">Product Details</a>
             </div>
           </div>
         </div>

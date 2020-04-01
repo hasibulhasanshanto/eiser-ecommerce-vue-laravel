@@ -46,7 +46,7 @@
                         <li class="nav-item">
                             <a href="{{ route('admin.user.index')}}" class="nav-link active">
                                 <i class="nav-icon fas fa-users"></i>
-                                <p>User</p>
+                                <p>Users</p>
                             </a>
                         </li>
                         @endif
@@ -97,8 +97,17 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{ route('admin.coupon.index')}}" class="nav-link">
+                        <i class="nav-icon fa fa-donate"></i>
+                        <p>
+                            Coupons
+                            <span class="right badge badge-danger">{{ $coupon_count}}</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fa fa-th"></i>
+                        <i class="nav-icon fa fa-layer-group"></i>
                         <p>
                             Widgets
                             <span class="right badge badge-danger">New</span>

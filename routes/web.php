@@ -8,8 +8,9 @@ Route::get('/new-products', 'ProductController@newProduct');
 Route::get('/inspire-products', 'ProductController@inspireProduct');
 Route::get('/all-products', 'ProductController@allProduct');
 Route::get('/all-category', 'ProductController@getAllcategory');
+Route::get('/category-wise-product', 'ProductController@getCategoryProduct');
 Route::get('/all-brands', 'ProductController@getAllBrands');
-Route::get('/single-product/{id}', 'ProductController@singleProduct');
+Route::get('/show-single-product/{id}', 'ProductController@singleProduct');
 
 //Auth Routes
 Auth::routes();
@@ -27,6 +28,7 @@ Route::group(['as'=>'admin.','prefix'=>'dashboard','namespace'=>'Admin','middlew
 
         Route::resource('user', 'UserController');
         Route::resource('brand', 'BrandController');
+        Route::resource('coupon', 'CouponController');
     });
 
     Route::group(['middleware' => 'VendorMiddleware'], function() {
@@ -47,6 +49,9 @@ Route::group(['middleware' => ['auth', 'AdminMiddleware']], function() {
     Route::get('/product/unpublish/{id}', 'Admin\ProductsController@unpublish')->name('un-product');
     Route::get('/product/publish/{id}', 'Admin\ProductsController@publish')->name('pub-product');
 
+        Route::get('/coupon/unpublish/{id}', 'Admin\CouponController@unpublish')->name('un-coupon');
+    Route::get('/coupon/publish/{id}', 'Admin\CouponController@publish')->name('pub-coupon');
+
 });
 
 
@@ -65,4 +70,10 @@ View::composer('backend.includes.aside', function ($view) {
 View::composer('backend.includes.aside', function ($view) {
     $product_count = App\Product::count();
     $view->with('product_count', $product_count);
+});
+
+// coupon_count Composer
+View::composer('backend.includes.aside', function ($view) {
+    $coupon_count = App\Coupon::count();
+    $view->with('coupon_count', $coupon_count);
 });

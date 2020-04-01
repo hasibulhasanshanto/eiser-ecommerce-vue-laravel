@@ -77,7 +77,7 @@ export default {
             })
         },
         singleProductbyId(context, payload){
-            axios.get('/single-product/' +payload)
+            axios.get('/show-single-product/' +payload)
                 .then((response) => { 
                     //console.log(response.data.singleProduct)
                     context.commit('singleProduct', response.data.singleProduct)

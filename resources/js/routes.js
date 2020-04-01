@@ -4,6 +4,7 @@ import BlogComponent from './components/public/Blog';
 import TrackOrderComponent from './components/public/Track';
 import ContactComponent from './components/public/Contact';
 import SingleProductComponent from './components/public/SingleProduct';
+import CartComponent from './components/public/Cart';
 
 
 export const routes = [
@@ -30,5 +31,9 @@ export const routes = [
     {
         path: '/single-product/:id',
         component: SingleProductComponent
+    }, 
+    {
+        path: '/cart/',
+        component: CartComponent
     }, 
 ]
