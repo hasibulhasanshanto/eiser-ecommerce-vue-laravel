@@ -21,7 +21,8 @@ import storeData from './store/store.js';
 
 const router = new VueRouter({
     routes, // short for `routes: routes`
-    mode: 'hash'
+    //mode: 'hash'
+    mode: 'history'
 })
 
 const store = new Vuex.Store(

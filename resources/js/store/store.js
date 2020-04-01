@@ -1,6 +1,8 @@
 import Axios from "axios"
 
 export default {
+
+    // Start State Area
     state: {
         featured_products: [],
         new_products: [],
@@ -9,17 +11,19 @@ export default {
         show_category: [],
         show_brand: [],
         single_product: [],
+        category_product: [],
+        brand_product: []
     },
 
+
+    // Start Getters Area
     getters: {
         getProducts(state) {
             return state.featured_products
         },
-
         getNewProducts(state) {
             return state.new_products
         },
-
         getInspireProducts(state) {
             return state.inspire_products
         },
@@ -35,8 +39,15 @@ export default {
         getSingleProduct(state) {
             return state.single_product
         },
+        getCategoryProduct(state) {
+            return state.category_product
+        },
+        getBrandProduct(state) {
+            return state.brand_product
+        }
     }, 
 
+    // Start Actions Area
     actions: {
         allFeaturesProduct(context){
             axios.get('/features-product')
@@ -83,9 +94,23 @@ export default {
                     context.commit('singleProduct', response.data.singleProduct)
             })
         },
+        allProductsByCatId(context, payload){
+            axios.get('/category-wise-product/' +payload)
+                .then((response) => {  
+                    context.commit('productsByCatId', response.data.catProducts)
+            })
+        },
+        allProductsByBrandId(context, payload){
+            axios.get('/brand-wise-product/' +payload)
+                .then((response) => {  
+                    context.commit('productsByBrand', response.data.brandProducts)
+            })
+        }
         
+
     },
 
+    // Start Mutation Area
     mutations: {
         featuredProducts(state, data) {
             return state.featured_products = data;
@@ -110,6 +135,14 @@ export default {
         },
         singleProduct(state, data) {
             return state.single_product = data;
+        },
+        productsByCatId(state, data) {
+            return state.category_product = data;
+        },
+        productsByBrand(state, data) {
+            return state.brand_product = data;
         }
+
+    
     }
 }

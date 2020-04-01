@@ -142,7 +142,7 @@
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fa fa-th"></i>
+                        <i class="nav-icon fas fa-heart"></i>
                         <p>
                             Wishlist
                             <span class="right badge badge-danger">3</span>
@@ -151,9 +151,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fa fa-th"></i>
+                        <i class="nav-icon fas fa-money-check-alt"></i>
                         <p>
-                            Order
+                            Orders
                             <span class="right badge badge-danger">1</span>
                         </p>
                     </a>

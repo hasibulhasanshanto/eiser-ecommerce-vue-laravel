@@ -2,15 +2,17 @@
 
 //Front End routes
 //Route::get('/{any}','Front\FrontController@index')->where(' any', '.*');  
-Route::get('/', 'Front\FrontController@index')->name('home');
+//Route::get('/', 'Front\FrontController@index')->name('home');
+Route::get('/', 'ProductController@index')->name('home');
 Route::get('/features-product', 'ProductController@getFeaturesProduct');
 Route::get('/new-products', 'ProductController@newProduct');
 Route::get('/inspire-products', 'ProductController@inspireProduct');
 Route::get('/all-products', 'ProductController@allProduct');
 Route::get('/all-category', 'ProductController@getAllcategory');
-Route::get('/category-wise-product', 'ProductController@getCategoryProduct');
 Route::get('/all-brands', 'ProductController@getAllBrands');
 Route::get('/show-single-product/{id}', 'ProductController@singleProduct');
+Route::get('/category-wise-product/{id}', 'ProductController@getCategoryProduct');
+Route::get('/brand-wise-product/{id}', 'ProductController@getBrandProduct');
 
 //Auth Routes
 Auth::routes();

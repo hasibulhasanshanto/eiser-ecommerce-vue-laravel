@@ -6,9 +6,14 @@ use App\Brand;
 use App\Product;
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
+    public function index(){
+        return view('frontend.pages.home');
+    }
+    
     public function getFeaturesProduct(){
 
         $featured = Product::take(3)->get();        
@@ -64,8 +69,31 @@ class ProductController extends Controller
         ]);
     }
 
-    public function getCategoryProduct(){
-        
+    public function getCategoryProduct($id){
+        $catProducts = DB::table('products') 
+            ->join('categories','products.pro_category','categories.id')
+            ->select('products.*', 'categories.cat_name')
+            ->where('pro_category', $id)
+            ->get();
+        // $catProducts = DB::table('products as pro') 
+        //     ->join('categories as categories', 'categories.id', '=', 'pro.pro_category')
+        //     ->where('pro_category', $id)
+        //     ->get();
+        //return $catProducts;
+        return  response()->json([
+            'catProducts' => $catProducts
+        ]);
+    }
+    public function getBrandProduct($id){
+        $brandProducts = DB::table('products') 
+            ->join('brands','products.pro_band','brands.id')
+            ->select('products.*', 'brands.br_name')
+            ->where('pro_band', $id)
+            ->get(); 
+            
+        return  response()->json([
+            'brandProducts' => $brandProducts
+        ]);
     }
 
 
