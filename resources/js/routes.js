@@ -1,49 +1,48 @@
-import AdminHomeComponent from './components/public/Home';
-import ShopComponent from './components/public/Shop';
-import BlogComponent from './components/public/Blog';
-import TrackOrderComponent from './components/public/Track';
-import ContactComponent from './components/public/Contact';
-import SingleProductComponent from './components/public/SingleProduct';
-import CategoryProductComponent from './components/public/CategoryProduct';
-import BrandProductComponent from './components/public/BrandProduct';
-import CartComponent from './components/public/Cart';
-
+import AdminHomeComponent from "./components/public/Home";
+import ShopComponent from "./components/public/Shop";
+import BlogComponent from "./components/public/Blog";
+import TrackOrderComponent from "./components/public/Track";
+import ContactComponent from "./components/public/Contact";
+import SingleProductComponent from "./components/public/SingleProduct";
+import CategoryProductComponent from "./components/public/CategoryProduct";
+import BrandProductComponent from "./components/public/BrandProduct";
+import CartComponent from "./components/public/Cart";
 
 export const routes = [
     {
-        path: '/',
+        path: "/",
         component: AdminHomeComponent
-    }, 
+    },
     {
-        path: '/shop',
+        path: "/shop",
         component: ShopComponent
-    }, 
+    },
     {
-        path: '/blog',
+        path: "/blog",
         component: BlogComponent
-    }, 
+    },
     {
-        path: '/track',
+        path: "/track",
         component: TrackOrderComponent
     },
     {
-        path: '/contact',
+        path: "/contact",
         component: ContactComponent
-    }, 
+    },
     {
-        path: '/single-product/:id',
+        path: "/single-product/:id",
         component: SingleProductComponent
-    }, 
+    },
     {
-        path: '/category-product/:id',
+        path: "/category-product/:id",
         component: CategoryProductComponent
-    }, 
+    },
     {
-        path: '/brand-products/:id',
+        path: "/brand-products/:id",
         component: BrandProductComponent
-    }, 
+    },
     {
-        path: '/cart/',
+        path: "/cart/",
         component: CartComponent
-    }, 
-]
+    }
+];

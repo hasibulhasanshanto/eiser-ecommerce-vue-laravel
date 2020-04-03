@@ -1,12 +1,10 @@
 <template>
-    <div id="cart">
-            <!--================Home Banner Area =================-->
+  <div id="cart">
+    <!--================Home Banner Area =================-->
     <section class="banner_area">
       <div class="banner_inner d-flex align-items-center">
         <div class="container">
-          <div
-            class="banner_content d-md-flex justify-content-between align-items-center"
-          >
+          <div class="banner_content d-md-flex justify-content-between align-items-center">
             <div class="mb-3 mb-md-0">
               <h2>Cart</h2>
               <p>Very us move be blessed multiply night</p>
@@ -29,156 +27,57 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">Product</th>
+                  <th scope="col">Product Name</th>
                   <th scope="col">Price</th>
                   <th scope="col">Quantity</th>
-                  <th scope="col">Total</th>
+                  <th scope="col">
+                    Total
+                    <span class="total">{{ sum = 0 }} {{ total = 0 }}</span>
+                  </th> 
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr v-for="cartProduct in showCartProduct" :key>
                   <td>
                     <div class="media">
                       <div class="d-flex">
                         <img
-                          src="img/product/single-product/cart-1.jpg"
-                          alt=""
+                          :src="`storage/product/${cartProduct.options.image}`"
+                          alt
+                          width="70"
+                          height="70"
                         />
                       </div>
                       <div class="media-body">
-                        <p>Minimalistic shop for multipurpose use</p>
+                        <p>{{ cartProduct.name }}</p>
                       </div>
                     </div>
                   </td>
                   <td>
-                    <h5>$360.00</h5>
+                    <h5>Tk. {{ cartProduct.price }}</h5>
                   </td>
                   <td>
-                    <div class="product_count">
-                      <input
-                        type="text"
-                        name="qty"
-                        id="sst"
-                        maxlength="12"
-                        value="1"
-                        title="Quantity:"
-                        class="input-text qty"
-                      />
-                      <button
-                        onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                        class="increase items-count"
-                        type="button"
-                      >
-                        <i class="lnr lnr-chevron-up"></i>
-                      </button>
-                      <button
-                        onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                        class="reduced items-count"
-                        type="button"
-                      >
-                        <i class="lnr lnr-chevron-down"></i>
-                      </button>
-                    </div>
+                    <form method="post" @submit.prevent="updateCart()">
+                                    <div class="product_count">
+                                        <input
+                                                type="text"
+                                                name="qty"
+                                                id="sst"
+                                                maxlength="12"
+                                                v-model="cartProduct.qty"
+                                                title="Quantity:"
+                                                class="input-text qty"
+                                        />
+                                    </div>
+                                    </form>
                   </td>
                   <td>
-                    <h5>$720.00</h5>
+                    <h5>Tk.{{ total = cartProduct.price*cartProduct.qty }}</h5>
                   </td>
-                </tr>
-                <tr>
+                  <span class="total">{{ sum = sum+total }}</span>
                   <td>
-                    <div class="media">
-                      <div class="d-flex">
-                        <img
-                          src="img/product/single-product/cart-1.jpg"
-                          alt=""
-                        />
-                      </div>
-                      <div class="media-body">
-                        <p>Minimalistic shop for multipurpose use</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <h5>$360.00</h5>
-                  </td>
-                  <td>
-                    <div class="product_count">
-                      <input
-                        type="text"
-                        name="qty"
-                        id="sst"
-                        maxlength="12"
-                        value="1"
-                        title="Quantity:"
-                        class="input-text qty"
-                      />
-                      <button
-                        onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                        class="increase items-count"
-                        type="button"
-                      >
-                        <i class="lnr lnr-chevron-up"></i>
-                      </button>
-                      <button
-                        onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                        class="reduced items-count"
-                        type="button"
-                      >
-                        <i class="lnr lnr-chevron-down"></i>
-                      </button>
-                    </div>
-                  </td>
-                  <td>
-                    <h5>$720.00</h5>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="media">
-                      <div class="d-flex">
-                        <img
-                          src="img/product/single-product/cart-1.jpg"
-                          alt=""
-                        />
-                      </div>
-                      <div class="media-body">
-                        <p>Minimalistic shop for multipurpose use</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <h5>$360.00</h5>
-                  </td>
-                  <td>
-                    <div class="product_count">
-                      <input
-                        type="text"
-                        name="qty"
-                        id="sst"
-                        maxlength="12"
-                        value="1"
-                        title="Quantity:"
-                        class="input-text qty"
-                      />
-                      <button
-                        onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                        class="increase items-count"
-                        type="button"
-                      >
-                        <i class="lnr lnr-chevron-up"></i>
-                      </button>
-                      <button
-                        onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                        class="reduced items-count"
-                        type="button"
-                      >
-                        <i class="lnr lnr-chevron-down"></i>
-                      </button>
-                    </div>
-                  </td>
-                  <td>
-                    <h5>$720.00</h5>
-                  </td>
+                                    <button class="btn btn-danger btn-sm" @click.prevent="deleteCart(cartProduct.rowId)">X</button>
+                                </td>
                 </tr>
                 <tr class="bottom_button">
                   <td>
@@ -189,19 +88,8 @@
                   <td>
                     <div class="cupon_text">
                       <input type="text" placeholder="Coupon Code" />
-                      <a class="main_btn" href="#">Apply</a>
-                      <a class="gray_btn" href="#">Close Coupon</a>
+                      <a class="main_btn" href="#">Apply</a> 
                     </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <h5>Subtotal</h5>
-                  </td>
-                  <td>
-                    <h5>$2160.00</h5>
                   </td>
                 </tr>
                 <tr class="shipping_area">
@@ -212,39 +100,41 @@
                   </td>
                   <td>
                     <div class="shipping_box">
-                      <ul class="list">
-                        <li>
-                          <a href="#">Flat Rate: $5.00</a>
-                        </li>
-                        <li>
-                          <a href="#">Free Shipping</a>
-                        </li>
-                        <li>
-                          <a href="#">Flat Rate: $10.00</a>
-                        </li>
+                      <ul class="list">                        
                         <li class="active">
-                          <a href="#">Local Delivery: $2.00</a>
+                          <a href="#">Free Shipping</a>
+                        </li> 
+                        <li >
+                          <a href="#">Delivery in Dhaka: Tk. 60</a>
                         </li>
-                      </ul>
-                      <h6>
-                        Calculate Shipping
-                        <i class="fa fa-caret-down" aria-hidden="true"></i>
-                      </h6>
-                      <select class="shipping_select">
-                        <option value="1">Bangladesh</option>
-                        <option value="2">India</option>
-                        <option value="4">Pakistan</option>
-                      </select>
-                      <select class="shipping_select">
-                        <option value="1">Select a State</option>
-                        <option value="2">Select a State</option>
-                        <option value="4">Select a State</option>
-                      </select>
-                      <input type="text" placeholder="Postcode/Zipcode" />
-                      <a class="gray_btn" href="#">Update Details</a>
+                        <li>
+                          <a href="#">Flat Rate: Tk. 100</a>
+                        </li>
+                      </ul>   
                     </div>
                   </td>
                 </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <h5>Discount</h5>
+                  </td>
+                  <td>
+                    <h5>Tk. 0</h5>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <h5>Subtotal</h5>
+                  </td>
+                  <td>
+                    <h5>Tk.{{ sum }}</h5>
+                  </td>
+                </tr>
+                
                 <tr class="out_button_area">
                   <td></td>
                   <td></td>
@@ -263,15 +153,57 @@
       </div>
     </section>
     <!--================End Cart Area =================-->
-    </div>
+  </div>
 </template>
 
 <script>
-export default {
-    name: "cart"
-}
+  export default {
+    name: "cart",
+
+    data(){
+            return{
+                qty:'',
+                rowId:''
+            }
+        },
+
+    mounted() {
+      this.$store.dispatch("showCartProducts");
+    },
+
+    computed: {
+      showCartProduct() {
+        return this.$store.getters.getCartProduct; 
+      }
+    },
+            methods:{
+            deleteCart(rowId){
+                axios.get('/delete-cart/'+rowId)
+                    .then((response)=>{
+                        //console.log(response.data.cartDelete)
+                        this.$store.dispatch("showCartProducts")
+                    })
+            },
+            updateCart(){
+                axios.post('`/update-cart/${this.$route.params.rowId}`')
+                    .then((response)=>{
+                        console.log(response.data)
+                        this.$router.push('/cart')
+                    })
+            }
+        },
+        watch:{
+            $click(to,from){
+                this.deleteCart();
+            }
+        }
+  };
 </script>
 
 <style>
-
+  .total {
+    visibility: hidden;
+    overflow: hidden;
+    margin-left: -120px;
+  }
 </style>

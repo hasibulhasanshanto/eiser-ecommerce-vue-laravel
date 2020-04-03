@@ -42,14 +42,20 @@
 
             <div class="latest_product_inner">
               <div class="row">
-                <div class="col-lg-4 col-md-6" v-for="shopProduct in getShopProduct" :key="">
+                <div class="col-lg-4 col-md-6" v-for="shopProduct in getShopProduct" :key>
                   <div class="single-product">
                     <div class="product-img">
-                      <img class="card-img" :src="`storage/product/${shopProduct.pro_image}`" alt=""  width="255" height="255"/>
+                      <img
+                        class="card-img"
+                        :src="`storage/product/${shopProduct.pro_image}`"
+                        alt
+                        width="255"
+                        height="255"
+                      />
                       <div class="p_icon">
                         <router-link :to="`single-product/${shopProduct.id}`">
-                        <i class="ti-eye"></i>
-                        </router-link> 
+                          <i class="ti-eye"></i>
+                        </router-link>
                         <a href="#">
                           <i class="ti-heart"></i>
                         </a>
@@ -61,14 +67,14 @@
                     <div class="product-btm">
                       <router-link :to="`single-product/${shopProduct.id}`" class="d-block">
                         <h4>{{ shopProduct.pro_name }}</h4>
-                      </router-link> 
+                      </router-link>
                       <div class="mt-3">
                         <span class="mr-4">Tk. {{ shopProduct.pro_price }}</span>
                         <del>Tk. {{ shopProduct.pro_offprice }}</del>
                       </div>
                     </div>
                   </div>
-                </div>                  
+                </div>
               </div>
             </div>
           </div>
@@ -80,10 +86,11 @@
                   <h3>Browse Categories</h3>
                 </div>
                 <div class="widgets_inner">
-                  <ul class="list">                    
-                    <li v-for="shopCategory in getShopCategory" :key="">
-                      <router-link :to="`/category-product/${shopCategory.id}`">{{ shopCategory.cat_name }}</router-link> 
-                    </li> 
+                  <ul class="list">
+                    <li v-for="shopCategory in getShopCategory" :key>
+                      <router-link :to="`/category-product/${shopCategory.id}`" >
+                      {{ shopCategory.cat_name }}</router-link>
+                    </li>
                   </ul>
                 </div>
               </aside>
@@ -94,9 +101,9 @@
                 </div>
                 <div class="widgets_inner">
                   <ul class="list">
-                    <li v-for="shopBrands in getShopBrands" :key="">
-                      <router-link :to="`/brand-products/${shopBrands.id}`">{{ shopBrands.br_name }}</router-link> 
-                    </li> 
+                    <li v-for="shopBrands in getShopBrands" :key>
+                      <router-link :to="`/brand-products/${shopBrands.id}`">{{ shopBrands.br_name }}</router-link>
+                    </li>
                   </ul>
                 </div>
               </aside>
@@ -150,28 +157,30 @@
 </template>
 
 <script>
-export default {
-  name: "shop",
+  export default {
+    name: "shop",
 
-  mounted(){
-   this.$store.dispatch("allShopProduct"),
-   this.$store.dispatch("allShopCategory"),
-   this.$store.dispatch("allShopBrands")
-  },
+    mounted() {
+      this.$store.dispatch("allShopProduct"),
+        this.$store.dispatch("allShopCategory"),
+        this.$store.dispatch("allShopBrands");
+    },
 
-  computed:{
-    getShopProduct(){
-      return this.$store.getters.getAllProducts
-    },
-    getShopCategory(){
-      return this.$store.getters.getAllCategory
-    },
-    getShopBrands(){
-      return this.$store.getters.getAllBrands
-    },
-  },
-};
+    computed: {
+      getShopProduct() {
+        return this.$store.getters.getAllProducts;
+      },
+      getShopCategory() {
+        return this.$store.getters.getAllCategory;
+      },
+      getShopBrands() {
+        return this.$store.getters.getAllBrands;
+      }
+    }
+    
+  };
 </script>
 
 <style>
+
 </style>

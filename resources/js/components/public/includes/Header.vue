@@ -80,9 +80,9 @@
 </template>
 
 <script>
-export default {
-  name: "mainmenu"
-};
+  export default {
+    name: "mainmenu"
+  };
 </script>
 
 <style>

@@ -1,5 +1,5 @@
 <template>
-  <div>    
+  <div>
     <!--================Home Banner Area =================-->
     <section class="home_banner_area mb-40">
       <div class="banner_inner d-flex align-items-center">
@@ -7,7 +7,11 @@
           <div class="banner_content row">
             <div class="col-lg-12">
               <p class="sub text-uppercase">men Collection</p>
-              <h3><span>Show</span> Your <br />Personal <span>Style</span></h3>
+              <h3>
+                <span>Show</span> Your
+                <br />Personal
+                <span>Style</span>
+              </h3>
               <h4>Fowl saw dry which a above together place.</h4>
               <a class="main_btn mt-40" href="#">View Collection</a>
             </div>
@@ -71,21 +75,27 @@
         <div class="row justify-content-center">
           <div class="col-lg-12">
             <div class="main_title">
-              <h2><span>Featured product</span></h2>
-              <p>Bring called seed first of third give itself now ment</p> 
+              <h2>
+                <span>Featured product</span>
+              </h2>
+              <p>Bring called seed first of third give itself now ment</p>
             </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-lg-4 col-md-6" v-for="featuresProduct in getFeaturesProduct" :key="">
+          <div class="col-lg-4 col-md-6" v-for="featuresProduct in getFeaturesProduct" :key>
             <div class="single-product">
               <div class="product-img">
-                <img class="img-fluid w-100" :src="`storage/product/${featuresProduct.pro_image}`" alt="" />
+                <img
+                  class="img-fluid w-100"
+                  :src="`storage/product/${featuresProduct.pro_image}`"
+                  alt
+                />
                 <div class="p_icon">
                   <router-link :to="`single-product/${featuresProduct.id}`">
                     <i class="ti-eye"></i>
-                  </router-link> 
+                  </router-link>
                   <a href="#">
                     <i class="ti-heart"></i>
                   </a>
@@ -97,14 +107,14 @@
               <div class="product-btm">
                 <router-link :to="`single-product/${featuresProduct.id}`" class="d-block">
                   <h4>{{ featuresProduct.pro_name }}</h4>
-                </router-link> 
+                </router-link>
                 <div class="mt-3">
                   <span class="mr-4">Tk. {{ featuresProduct.pro_price }}</span>
                   <del>Tk. {{ featuresProduct.pro_offprice }}</del>
                 </div>
               </div>
             </div>
-          </div> 
+          </div>
         </div>
       </div>
     </section>
@@ -133,7 +143,9 @@
         <div class="row justify-content-center">
           <div class="col-lg-12">
             <div class="main_title">
-              <h2><span>new products</span></h2>
+              <h2>
+                <span>new products</span>
+              </h2>
               <p>Bring called seed first of third give itself now ment</p>
             </div>
           </div>
@@ -145,7 +157,7 @@
               <h5 class="text-uppercase">collection of 2019</h5>
               <h3 class="text-uppercase">Men’s summer t-shirt</h3>
               <div class="product-img">
-                <img class="img-fluid" src="frontend/img/product/new-product/new-product1.png" alt="" />
+                <img class="img-fluid" src="frontend/img/product/new-product/new-product1.png" alt />
               </div>
               <h4>$120.70</h4>
               <a href="#" class="main_btn">Add to cart</a>
@@ -154,14 +166,19 @@
 
           <div class="col-lg-6 mt-5 mt-lg-0">
             <div class="row">
-              <div class="col-lg-6 col-md-6" v-for="newProduct in getNewProduct" :key="">
+              <div class="col-lg-6 col-md-6" v-for="newProduct in getNewProduct" :key>
                 <div class="single-product">
                   <div class="product-img">
-                    <img  :src="`storage/product/${newProduct.pro_image}`" alt="" height="255" width="255"/>
+                    <img
+                      :src="`storage/product/${newProduct.pro_image}`"
+                      alt
+                      height="255"
+                      width="255"
+                    />
                     <div class="p_icon">
                       <router-link :to="`single-product/${newProduct.id}`">
                         <i class="ti-eye"></i>
-                      </router-link> 
+                      </router-link>
                       <a href="#">
                         <i class="ti-heart"></i>
                       </a>
@@ -173,14 +190,14 @@
                   <div class="product-btm">
                     <router-link :to="`single-product/${newProduct.id}`" class="d-block">
                       <h4>{{ newProduct.pro_name }}</h4>
-                    </router-link> 
+                    </router-link>
                     <div class="mt-3">
                       <span class="mr-4">Tk. {{ newProduct.pro_price }}</span>
                       <del>Tk. {{ newProduct.pro_offprice }}</del>
                     </div>
                   </div>
                 </div>
-              </div> 
+              </div>
             </div>
           </div>
         </div>
@@ -194,21 +211,23 @@
         <div class="row justify-content-center">
           <div class="col-lg-12">
             <div class="main_title">
-              <h2><span>Inspired products</span></h2>
+              <h2>
+                <span>Inspired products</span>
+              </h2>
               <p>Bring called seed first of third give itself now ment</p>
             </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-lg-3 col-md-6" v-for="inspProduct in getInspireProduct" :key="">
+          <div class="col-lg-3 col-md-6" v-for="inspProduct in getInspireProduct" :key>
             <div class="single-product">
               <div class="product-img">
-                <img :src="`storage/product/${inspProduct.pro_image}`" alt="" height="255" width="255"/>
+                <img :src="`storage/product/${inspProduct.pro_image}`" alt height="255" width="255" />
                 <div class="p_icon">
                   <router-link :to="`single-product/${inspProduct.id}`">
                     <i class="ti-eye"></i>
-                  </router-link> 
+                  </router-link>
                   <a href="#">
                     <i class="ti-heart"></i>
                   </a>
@@ -220,14 +239,14 @@
               <div class="product-btm">
                 <router-link :to="`single-product/${inspProduct.id}`" class="d-block">
                   <h4>{{ inspProduct.pro_name }}</h4>
-                </router-link>  
+                </router-link>
                 <div class="mt-3">
                   <span class="mr-4">Tk. {{ inspProduct.pro_price }}</span>
                   <del>Tk. {{ inspProduct.pro_offprice }}</del>
                 </div>
               </div>
             </div>
-          </div>           
+          </div>
         </div>
       </div>
     </section>
@@ -239,7 +258,9 @@
         <div class="row justify-content-center">
           <div class="col-lg-12">
             <div class="main_title">
-              <h2><span>latest blog</span></h2>
+              <h2>
+                <span>latest blog</span>
+              </h2>
               <p>Bring called seed first of third give itself now ment</p>
             </div>
           </div>
@@ -249,16 +270,20 @@
           <div class="col-lg-4 col-md-6">
             <div class="single-blog">
               <div class="thumb">
-                <img class="img-fluid" src="/frontend/img/b1.jpg" alt="">
+                <img class="img-fluid" src="/frontend/img/b1.jpg" alt />
               </div>
               <div class="short_details">
                 <div class="meta-top d-flex">
                   <a href="#">By Admin</a>
-                  <a href="#"><i class="ti-comments-smiley"></i>2 Comments</a>
+                  <a href="#">
+                    <i class="ti-comments-smiley"></i>2 Comments
+                  </a>
                 </div>
                 <a class="d-block" href="single-blog.html">
-                  <h4>Ford clever bed stops your sleeping
-                    partner hogging the whole</h4>
+                  <h4>
+                    Ford clever bed stops your sleeping
+                    partner hogging the whole
+                  </h4>
                 </a>
                 <div class="text-wrap">
                   <p>
@@ -266,32 +291,10 @@
                     Forth.
                   </p>
                 </div>
-                <a href="#" class="blog_btn">Learn More <span class="ml-2 ti-arrow-right"></span></a>
-              </div>
-            </div>
-          </div>
-          
-          <div class="col-lg-4 col-md-6">
-            <div class="single-blog">
-              <div class="thumb">
-                <img class="img-fluid" src="/frontend/img/b2.jpg" alt="">
-              </div>
-              <div class="short_details">
-                <div class="meta-top d-flex">
-                  <a href="#">By Admin</a>
-                  <a href="#"><i class="ti-comments-smiley"></i>2 Comments</a>
-                </div>
-                <a class="d-block" href="single-blog.html">
-                  <h4>Ford clever bed stops your sleeping
-                    partner hogging the whole</h4>
+                <a href="#" class="blog_btn">
+                  Learn More
+                  <span class="ml-2 ti-arrow-right"></span>
                 </a>
-                <div class="text-wrap">
-                  <p>
-                    Let one fifth i bring fly to divided face for bearing the divide unto seed winged divided light
-                    Forth.
-                  </p>
-                </div>
-                <a href="#" class="blog_btn">Learn More <span class="ml-2 ti-arrow-right"></span></a>
               </div>
             </div>
           </div>
@@ -299,16 +302,20 @@
           <div class="col-lg-4 col-md-6">
             <div class="single-blog">
               <div class="thumb">
-                <img class="img-fluid" src="/frontend/img/b3.jpg" alt="">
+                <img class="img-fluid" src="/frontend/img/b2.jpg" alt />
               </div>
               <div class="short_details">
                 <div class="meta-top d-flex">
                   <a href="#">By Admin</a>
-                  <a href="#"><i class="ti-comments-smiley"></i>2 Comments</a>
+                  <a href="#">
+                    <i class="ti-comments-smiley"></i>2 Comments
+                  </a>
                 </div>
                 <a class="d-block" href="single-blog.html">
-                  <h4>Ford clever bed stops your sleeping
-                    partner hogging the whole</h4>
+                  <h4>
+                    Ford clever bed stops your sleeping
+                    partner hogging the whole
+                  </h4>
                 </a>
                 <div class="text-wrap">
                   <p>
@@ -316,7 +323,42 @@
                     Forth.
                   </p>
                 </div>
-                <a href="#" class="blog_btn">Learn More <span class="ml-2 ti-arrow-right"></span></a>
+                <a href="#" class="blog_btn">
+                  Learn More
+                  <span class="ml-2 ti-arrow-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="single-blog">
+              <div class="thumb">
+                <img class="img-fluid" src="/frontend/img/b3.jpg" alt />
+              </div>
+              <div class="short_details">
+                <div class="meta-top d-flex">
+                  <a href="#">By Admin</a>
+                  <a href="#">
+                    <i class="ti-comments-smiley"></i>2 Comments
+                  </a>
+                </div>
+                <a class="d-block" href="single-blog.html">
+                  <h4>
+                    Ford clever bed stops your sleeping
+                    partner hogging the whole
+                  </h4>
+                </a>
+                <div class="text-wrap">
+                  <p>
+                    Let one fifth i bring fly to divided face for bearing the divide unto seed winged divided light
+                    Forth.
+                  </p>
+                </div>
+                <a href="#" class="blog_btn">
+                  Learn More
+                  <span class="ml-2 ti-arrow-right"></span>
+                </a>
               </div>
             </div>
           </div>
@@ -328,31 +370,32 @@
 </template>
 
 <script>
-export default {
-  name: "home",
+  export default {
+    name: "home",
 
-  mounted(){
-   this.$store.dispatch("allFeaturesProduct"),
-   this.$store.dispatch("allNewProduct"),
-   this.$store.dispatch("allInspireProduct"),
-   this.$store.dispatch("singleProductbyId",this.$route.params.id)
-  },
+    mounted() {
+      this.$store.dispatch("allFeaturesProduct"),
+        this.$store.dispatch("allNewProduct"),
+        this.$store.dispatch("allInspireProduct"),
+        this.$store.dispatch("singleProductbyId", this.$route.params.id);
+    },
 
-  computed:{
-    getFeaturesProduct(){
-      return this.$store.getters.getProducts
-    },
-    getNewProduct(){
-      return this.$store.getters.getNewProducts
-    },
-    getInspireProduct(){
-      return this.$store.getters.getInspireProducts
-    },
-    get_SingleProduct(){
-      return this.$store.getters.getSingleProduct
+    computed: {
+      getFeaturesProduct() {
+        return this.$store.getters.getProducts;
+      },
+      getNewProduct() {
+        return this.$store.getters.getNewProducts;
+      },
+      getInspireProduct() {
+        return this.$store.getters.getInspireProducts;
+      },
+      get_SingleProduct() {
+        return this.$store.getters.getSingleProduct;
+      }
     }
-  },
-}
+    
+  };
 </script>
 
 <style>

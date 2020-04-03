@@ -12,7 +12,8 @@ export default {
         show_brand: [],
         single_product: [],
         category_product: [],
-        brand_product: []
+        brand_product: [],
+        cart_product: [],
     },
 
 
@@ -35,7 +36,7 @@ export default {
         },
         getAllBrands(state) {
             return state.show_brand
-        }, 
+        },
         getSingleProduct(state) {
             return state.single_product
         },
@@ -44,69 +45,79 @@ export default {
         },
         getBrandProduct(state) {
             return state.brand_product
+        },
+        getCartProduct(state) {
+            return state.cart_product
         }
-    }, 
+    },
 
     // Start Actions Area
     actions: {
-        allFeaturesProduct(context){
+        allFeaturesProduct(context) {
             axios.get('/features-product')
                 .then((response) => {
                     //console.log(response.data.featured)
                     context.commit('featuredProducts', response.data.featured)
-            })
+                })
         },
-        allNewProduct(context){
+        allNewProduct(context) {
             axios.get('/new-products')
-                .then((response) => { 
+                .then((response) => {
                     context.commit('NewProducts', response.data.newProduct)
-            })
+                })
         },
-        allInspireProduct(context){
+        allInspireProduct(context) {
             axios.get('/inspire-products')
-                .then((response) => { 
+                .then((response) => {
                     context.commit('InspireProducts', response.data.inspireProduct)
-            })
+                })
         },
 
-        allShopProduct(context){
+        allShopProduct(context) {
             axios.get('/all-products')
-                .then((response) => { 
+                .then((response) => {
                     context.commit('allProducts', response.data.allProduct)
-            })
+                })
         },
-        allShopCategory(context){
+        allShopCategory(context) {
             axios.get('/all-category')
-                .then((response) => { 
+                .then((response) => {
                     context.commit('allCategory', response.data.allCategory)
-            })
+                })
         },
-        allShopBrands(context){
+        allShopBrands(context) {
             axios.get('/all-brands')
-                .then((response) => { 
+                .then((response) => {
                     context.commit('allBrands', response.data.allBrand)
-            })
+                })
         },
-        singleProductbyId(context, payload){
-            axios.get('/show-single-product/' +payload)
-                .then((response) => { 
+        singleProductbyId(context, payload) {
+            axios.get('/show-single-product/' + payload)
+                .then((response) => {
                     //console.log(response.data.singleProduct)
                     context.commit('singleProduct', response.data.singleProduct)
-            })
+                })
         },
-        allProductsByCatId(context, payload){
-            axios.get('/category-wise-product/' +payload)
-                .then((response) => {  
+        allProductsByCatId(context, payload) {
+            axios.get('/category-wise-product/' + payload)
+                .then((response) => {
                     context.commit('productsByCatId', response.data.catProducts)
-            })
+                })
         },
-        allProductsByBrandId(context, payload){
-            axios.get('/brand-wise-product/' +payload)
-                .then((response) => {  
+        allProductsByBrandId(context, payload) {
+            axios.get('/brand-wise-product/' + payload)
+                .then((response) => {
                     context.commit('productsByBrand', response.data.brandProducts)
-            })
+                })
+        },
+        showCartProducts(context) {
+            axios.get('/show-cart/')
+                .then((response) => {
+                    //console.log(response.data.cartProducts)
+                    context.commit('getCartProducts', response.data.cartProducts)
+                })
         }
-        
+
 
     },
 
@@ -127,22 +138,25 @@ export default {
         },
         allCategory(state, data) {
             return state.show_category = data;
-        
+
         },
         allBrands(state, data) {
             return state.show_brand = data;
-        
+
         },
         singleProduct(state, data) {
             return state.single_product = data;
         },
-        productsByCatId(state, data) {
-            return state.category_product = data;
+        productsByCatId(state, payload) {
+            return state.category_product = payload;
         },
-        productsByBrand(state, data) {
-            return state.brand_product = data;
+        productsByBrand(state, payload) {
+            return state.brand_product = payload;
+        },
+        getCartProducts(state, data) {
+            return state.cart_product = data;
         }
 
-    
+
     }
 }

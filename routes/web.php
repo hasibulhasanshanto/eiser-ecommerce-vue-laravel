@@ -14,7 +14,12 @@ Route::get('/show-single-product/{id}', 'ProductController@singleProduct');
 Route::get('/category-wise-product/{id}', 'ProductController@getCategoryProduct');
 Route::get('/brand-wise-product/{id}', 'ProductController@getBrandProduct');
 
-//Auth Routes
+Route::post('/add-to-cart/', 'CartController@addToCart');
+Route::get('/show-cart/', 'CartController@showCart');
+Route::get('/delete-cart/{id}','CartController@deleteCart');
+Route::post('/update-cart/{rowId}','CartController@updateCart');
+
+//Auth Routes user
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -32,7 +37,7 @@ Route::group(['as'=>'admin.','prefix'=>'dashboard','namespace'=>'Admin','middlew
         Route::resource('brand', 'BrandController');
         Route::resource('coupon', 'CouponController');
     });
-
+//Vendor Admin Routes
     Route::group(['middleware' => 'VendorMiddleware'], function() {
         Route::resource('product', 'ProductsController');
     });
@@ -51,7 +56,7 @@ Route::group(['middleware' => ['auth', 'AdminMiddleware']], function() {
     Route::get('/product/unpublish/{id}', 'Admin\ProductsController@unpublish')->name('un-product');
     Route::get('/product/publish/{id}', 'Admin\ProductsController@publish')->name('pub-product');
 
-        Route::get('/coupon/unpublish/{id}', 'Admin\CouponController@unpublish')->name('un-coupon');
+    Route::get('/coupon/unpublish/{id}', 'Admin\CouponController@unpublish')->name('un-coupon');
     Route::get('/coupon/publish/{id}', 'Admin\CouponController@publish')->name('pub-coupon');
 
 });

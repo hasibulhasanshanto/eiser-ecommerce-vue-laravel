@@ -42,14 +42,20 @@
 
             <div class="latest_product_inner">
               <div class="row">
-                <div class="col-lg-4 col-md-6" v-for="categoryProducts in getCategoryProducts" :key="">
+                <div class="col-lg-4 col-md-6" v-for="categoryProducts in getCategoryProducts" :key>
                   <div class="single-product">
                     <div class="product-img">
-                      <img class="card-img" :src="`/storage/product/${categoryProducts.pro_image}`" alt=""  width="255" height="255"/>
+                      <img
+                        class="card-img"
+                        :src="`/storage/product/${categoryProducts.pro_image}`"
+                        alt
+                        width="255"
+                        height="255"
+                      />
                       <div class="p_icon">
                         <router-link :to="`/single-product/${categoryProducts.id}`">
-                        <i class="ti-eye"></i>
-                        </router-link> 
+                          <i class="ti-eye"></i>
+                        </router-link>
                         <a href="#">
                           <i class="ti-heart"></i>
                         </a>
@@ -59,16 +65,24 @@
                       </div>
                     </div>
                     <div class="product-btm">
-                      <router-link :to="`/single-product/${categoryProducts.id}`" class="d-block">
-                        <h4>{{ categoryProducts.pro_name }}</h4>
-                      </router-link> 
+                      <router-link :to=" `/single-product/${categoryProducts.id}`" class="d-block" >
+                        <h4>
+                          {{ categoryProducts.pro_name }}
+                        </h4>
+                      </router-link>
                       <div class="mt-3">
-                        <span class="mr-4">Tk. {{ categoryProducts.pro_price }}</span>
-                        <del>Tk. {{ categoryProducts.pro_offprice }}</del>
+                        <span class="mr-4">
+                          Tk.
+                          {{ categoryProducts.pro_price }}
+                        </span>
+                        <del>
+                          Tk.
+                          {{ categoryProducts.pro_offprice }}
+                        </del>
                       </div>
                     </div>
                   </div>
-                </div>                  
+                </div>
               </div>
             </div>
           </div>
@@ -80,10 +94,12 @@
                   <h3>Browse Categories</h3>
                 </div>
                 <div class="widgets_inner">
-                  <ul class="list">                    
-                    <li v-for="shopCategory in getShopCategory" :key="">
-                      <router-link :to="`/category-product/${shopCategory.id}`">{{ shopCategory.cat_name }}</router-link> 
-                    </li> 
+                  <ul class="list">
+                    <li v-for="shopCategory in getShopCategory" :key>
+                      <router-link :to="`/category-product/${shopCategory.id}`">
+                        {{ shopCategory.cat_name }}
+                      </router-link>
+                    </li>
                   </ul>
                 </div>
               </aside>
@@ -94,9 +110,11 @@
                 </div>
                 <div class="widgets_inner">
                   <ul class="list">
-                    <li v-for="shopBrands in getShopBrands" :key="">
-                      <router-link :to="`/brand-products/${shopBrands.id}`">{{ shopBrands.br_name }}</router-link>  
-                    </li> 
+                    <li v-for="shopBrands in getShopBrands" :key>
+                      <router-link :to="`/brand-products/${shopBrands.id}`">
+                        {{ shopBrands.br_name }}
+                      </router-link>
+                    </li>
                   </ul>
                 </div>
               </aside>
@@ -153,37 +171,38 @@
 export default {
   name: "category_product",
 
-  mounted(){ 
-   this.$store.dispatch("allShopCategory"),
-   this.$store.dispatch("allShopBrands"),
-   this.$store.dispatch("allProductsByCatId", this.$route.params.id)
+  mounted() {
+    this.$store.dispatch("allShopCategory"),
+      this.$store.dispatch("allShopBrands"),
+      this.$store.dispatch("allProductsByCatId", this.$route.params.id);
   },
 
-  computed:{ 
-    getShopCategory(){
-      return this.$store.getters.getAllCategory
+  computed: {
+    getShopCategory() {
+      return this.$store.getters.getAllCategory;
     },
-    getShopBrands(){
-      return this.$store.getters.getAllBrands
+    getShopBrands() {
+      return this.$store.getters.getAllBrands;
     },
-    getCategoryProducts(){
-      return this.$store.getters.getCategoryProduct
-    },
-  },
-
-    methods: {
-        getCatProducts(){
-            this.$store.dispatch("allProductsByCatId", this.$route.params.id)
-        }
-    },
-
-    watch:{
-        $route(to, from){
-            this.getCatProducts();
-        }
+    getCategoryProducts() {
+      return this.$store.getters.getCategoryProduct;
     }
+  },
+
+  methods: {
+    getCatProducts() {
+      this.$store.dispatch("allProductsByCatId", this.$route.params.id);
+    }
+  },
+
+  watch: {
+    $route(to, from) {
+      this.getCatProducts();
+    }
+  }
 };
 </script>
 
 <style>
+
 </style>

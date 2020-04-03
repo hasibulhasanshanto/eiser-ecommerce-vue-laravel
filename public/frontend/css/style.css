@@ -4428,7 +4428,7 @@ h6 {
 }
 
 .cart_inner .table tbody tr.bottom_button td .cupon_text {
-    margin-left: -446px
+    margin-left: -280px
 }
 
 .cart_inner .table tbody tr.bottom_button td .cupon_text input {
@@ -4441,7 +4441,7 @@ h6 {
     color: #cccccc;
     font-family: "Roboto", sans-serif;
     font-weight: normal;
-    margin-right: -3px;
+    margin-right: 5px;
     outline: none;
     box-shadow: none
 }
@@ -4479,7 +4479,7 @@ h6 {
     line-height: 38px;
     text-transform: uppercase;
     padding: 0px 38px;
-    margin-right: -3px
+    margin-right: 5px
 }
 
 .cart_inner .table tbody tr.bottom_button td .cupon_text .gray_btn {

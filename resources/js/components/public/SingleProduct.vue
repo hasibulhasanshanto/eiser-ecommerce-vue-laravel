@@ -1,12 +1,10 @@
 <template>
-    <div id="singleproduct">
+  <div id="singleproduct">
     <!--================Home Banner Area =================-->
     <section class="banner_area">
       <div class="banner_inner d-flex align-items-center">
         <div class="container">
-          <div
-            class="banner_content d-md-flex justify-content-between align-items-center"
-          >
+          <div class="banner_content d-md-flex justify-content-between align-items-center">
             <div class="mb-3 mb-md-0">
               <h2>Product Details</h2>
               <p>Very us move be blessed multiply night</p>
@@ -27,39 +25,16 @@
         <div class="row s_product_inner">
           <div class="col-lg-6">
             <div class="s_product_img">
-              <div
-                id="carouselExampleIndicators"
-                class="carousel slide"
-                data-ride="carousel"
-              >
+              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
-                  <li
-                    data-target="#carouselExampleIndicators"
-                    data-slide-to="0"
-                    class="active"
-                  >
-                    <img
-                      src="/frontend/img/product/single-product/s-product-s-2.jpg"
-                      alt=""
-                    />
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
+                    <img src="/frontend/img/product/single-product/s-product-s-2.jpg" alt />
                   </li>
-                  <li
-                    data-target="#carouselExampleIndicators"
-                    data-slide-to="1"
-                  >
-                    <img
-                      src="/frontend/img/product/single-product/s-product-s-3.jpg"
-                      alt=""
-                    />
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1">
+                    <img src="/frontend/img/product/single-product/s-product-s-3.jpg" alt />
                   </li>
-                  <li
-                    data-target="#carouselExampleIndicators"
-                    data-slide-to="2"
-                  >
-                    <img
-                      src="/frontend/img/product/single-product/s-product-s-4.jpg"
-                      alt=""
-                    />
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2">
+                    <img src="/frontend/img/product/single-product/s-product-s-4.jpg" alt />
                   </li>
                 </ol>
                 <div class="carousel-inner">
@@ -91,55 +66,67 @@
           <div class="col-lg-5 offset-lg-1">
             <div class="s_product_text">
               <h3>{{ get_SingleProduct.pro_name }}</h3>
-              <h2>Tk .{{ get_SingleProduct.pro_price }} <del>{{ get_SingleProduct.pro_offprice }}</del></h2> 
+              <h2>
+                Tk .{{ get_SingleProduct.pro_price }}
+                <del>{{ get_SingleProduct.pro_offprice }}</del>
+              </h2>
               <ul class="list">
                 <li>
                   <a class="active" href="#">
-                    <span>Category</span> : {{ get_SingleProduct.pro_category }}</a
-                  >
+                    <span>Category</span>
+                    : {{ get_SingleProduct.pro_category }}
+                  </a>
                 </li>
                 <li>
-                  <a href="#"> <span>Availibility</span> : {{ get_SingleProduct.pro_qty }} In Stock</a>
+                  <a href="#">
+                    <span>Availibility</span>
+                    : {{ get_SingleProduct.pro_qty }} In Stock
+                  </a>
                 </li>
               </ul>
-              <p>
-                {{ get_SingleProduct.short_desc }}
-              </p>
-              <div class="product_count">
-                <label for="qty">Quantity:</label>
-                <input
-                  type="text"
-                  name="qty"
-                  id="sst"
-                  maxlength="12"
-                  value="1"
-                  title="Quantity:"
-                  class="input-text qty"
-                />
-                <button
-                  onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                  class="increase items-count"
-                  type="button"
-                >
-                  <i class="lnr lnr-chevron-up"></i>
-                </button>
-                <button
-                  onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                  class="reduced items-count"
-                  type="button"
-                >
-                  <i class="lnr lnr-chevron-down"></i>
-                </button>
-              </div>
-              <div class="card_area">
-                <a class="main_btn" href="#">Add to Cart</a>
-                <a class="icon_btn" href="#">
-                  <i class="lnr lnr lnr-diamond"></i>
-                </a>
-                <a class="icon_btn" href="#">
-                  <i class="lnr lnr lnr-heart"></i>
-                </a>
-              </div>
+              <p>{{ get_SingleProduct.short_desc }}</p>
+              <form method="post" @submit.prevent="addToCart()">
+                <div class="product_count">
+                  <label for="qty">Quantity:</label>
+                  <input
+                    type="text"
+                    name="qty"
+                    maxlength="12"
+                    value="1"
+                    v-model="qty"
+                    class="input-text qty"
+                  />
+                  
+                  <button
+                    onclick="let result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                    class="increase items-count"
+                    type="button"
+                  >
+                    <i class="lnr lnr-chevron-up"></i>
+                  </button>
+                  <button
+                    onclick="let result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                    class="reduced items-count"
+                    type="button"
+                  >
+                    <i class="lnr lnr-chevron-down"></i>
+                  </button>
+                  <input
+                    type="hidden"
+                    name="id"  
+                    v-model="get_SingleProduct.id"
+                  />
+                </div>
+                <div class="card_area">
+                  <input type="submit" class="main_btn" value="Add to Cart" />
+                  <a class="icon_btn" href="#">
+                    <i class="lnr lnr lnr-diamond"></i>
+                  </a>
+                  <a class="icon_btn" href="#">
+                    <i class="lnr lnr lnr-heart"></i>
+                  </a>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -160,8 +147,7 @@
               role="tab"
               aria-controls="home"
               aria-selected="true"
-              >Description</a
-            >
+            >Description</a>
           </li>
           <li class="nav-item">
             <a
@@ -172,8 +158,7 @@
               role="tab"
               aria-controls="profile"
               aria-selected="false"
-              >Specification</a
-            >
+            >Specification</a>
           </li>
           <li class="nav-item">
             <a
@@ -184,8 +169,7 @@
               role="tab"
               aria-controls="contact"
               aria-selected="false"
-              >Comments</a
-            >
+            >Comments</a>
           </li>
           <li class="nav-item">
             <a
@@ -196,27 +180,14 @@
               role="tab"
               aria-controls="review"
               aria-selected="false"
-              >Reviews</a
-            >
+            >Reviews</a>
           </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-          <div
-            class="tab-pane fade"
-            id="home"
-            role="tabpanel"
-            aria-labelledby="home-tab"
-          >
-            <p  v-html="get_SingleProduct.long_desc">
-              <!-- {{ get_SingleProduct.long_desc }} -->
-            </p>
+          <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <p v-html="get_SingleProduct.long_desc"></p>
           </div>
-          <div
-            class="tab-pane fade"
-            id="profile"
-            role="tabpanel"
-            aria-labelledby="profile-tab"
-          >
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="table-responsive">
               <table class="table">
                 <tbody>
@@ -288,22 +259,14 @@
               </table>
             </div>
           </div>
-          <div
-            class="tab-pane fade"
-            id="contact"
-            role="tabpanel"
-            aria-labelledby="contact-tab"
-          >
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
             <div class="row">
               <div class="col-lg-6">
                 <div class="comment_list">
                   <div class="review_item">
                     <div class="media">
                       <div class="d-flex">
-                        <img
-                          src="/frontend/img/product/single-product/review-1.png"
-                          alt=""
-                        />
+                        <img src="/frontend/img/product/single-product/review-1.png" alt />
                       </div>
                       <div class="media-body">
                         <h4>Blake Ruiz</h4>
@@ -321,10 +284,7 @@
                   <div class="review_item reply">
                     <div class="media">
                       <div class="d-flex">
-                        <img
-                          src="/frontend/img/product/single-product/review-2.png"
-                          alt=""
-                        />
+                        <img src="/frontend/img/product/single-product/review-2.png" alt />
                       </div>
                       <div class="media-body">
                         <h4>Blake Ruiz</h4>
@@ -342,10 +302,7 @@
                   <div class="review_item">
                     <div class="media">
                       <div class="d-flex">
-                        <img
-                          src="/frontend/img/product/single-product/review-3.png"
-                          alt=""
-                        />
+                        <img src="/frontend/img/product/single-product/review-3.png" alt />
                       </div>
                       <div class="media-body">
                         <h4>Blake Ruiz</h4>
@@ -417,13 +374,7 @@
                       </div>
                     </div>
                     <div class="col-md-12 text-right">
-                      <button
-                        type="submit"
-                        value="submit"
-                        class="btn submit_btn"
-                      >
-                        Submit Now
-                      </button>
+                      <button type="submit" value="submit" class="btn submit_btn">Submit Now</button>
                     </div>
                   </form>
                 </div>
@@ -451,54 +402,54 @@
                       <h3>Based on 3 Reviews</h3>
                       <ul class="list">
                         <li>
-                          <a href="#"
-                            >5 Star
+                          <a href="#">
+                            5 Star
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i> 01</a
-                          >
+                            <i class="fa fa-star"></i> 01
+                          </a>
                         </li>
                         <li>
-                          <a href="#"
-                            >4 Star
+                          <a href="#">
+                            4 Star
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i> 01</a
-                          >
+                            <i class="fa fa-star"></i> 01
+                          </a>
                         </li>
                         <li>
-                          <a href="#"
-                            >3 Star
+                          <a href="#">
+                            3 Star
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i> 01</a
-                          >
+                            <i class="fa fa-star"></i> 01
+                          </a>
                         </li>
                         <li>
-                          <a href="#"
-                            >2 Star
+                          <a href="#">
+                            2 Star
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i> 01</a
-                          >
+                            <i class="fa fa-star"></i> 01
+                          </a>
                         </li>
                         <li>
-                          <a href="#"
-                            >1 Star
+                          <a href="#">
+                            1 Star
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i> 01</a
-                          >
+                            <i class="fa fa-star"></i> 01
+                          </a>
                         </li>
                       </ul>
                     </div>
@@ -508,10 +459,7 @@
                   <div class="review_item">
                     <div class="media">
                       <div class="d-flex">
-                        <img
-                          src="/frontend/img/product/single-product/review-1.png"
-                          alt=""
-                        />
+                        <img src="/frontend/img/product/single-product/review-1.png" alt />
                       </div>
                       <div class="media-body">
                         <h4>Blake Ruiz</h4>
@@ -532,10 +480,7 @@
                   <div class="review_item">
                     <div class="media">
                       <div class="d-flex">
-                        <img
-                          src="/frontend/img/product/single-product/review-2.png"
-                          alt=""
-                        />
+                        <img src="/frontend/img/product/single-product/review-2.png" alt />
                       </div>
                       <div class="media-body">
                         <h4>Blake Ruiz</h4>
@@ -556,10 +501,7 @@
                   <div class="review_item">
                     <div class="media">
                       <div class="d-flex">
-                        <img
-                          src="/frontend/img/product/single-product/review-3.png"
-                          alt=""
-                        />
+                        <img src="/frontend/img/product/single-product/review-3.png" alt />
                       </div>
                       <div class="media-body">
                         <h4>Blake Ruiz</h4>
@@ -663,13 +605,7 @@
                       </div>
                     </div>
                     <div class="col-md-12 text-right">
-                      <button
-                        type="submit"
-                        value="submit"
-                        class="btn submit_btn"
-                      >
-                        Submit Now
-                      </button>
+                      <button type="submit" value="submit" class="btn submit_btn">Submit Now</button>
                     </div>
                   </form>
                 </div>
@@ -680,34 +616,53 @@
       </div>
     </section>
     <!--================End Product Description Area =================-->
-    </div>
+  </div>
 </template>
 
 <script>
-export default {
-  name: "singleproduct",
+  export default {
+    name: "singleproduct",
 
-  mounted(){
-    this.$store.dispatch("singleProductbyId",this.$route.params.id) 
-  },
+    data() {
+      return {
+        qty: '',
+        id: ''
+      };
+    },
 
-  computed:{
-    get_SingleProduct(){
-      return this.$store.getters.getSingleProduct
+    computed: {
+      get_SingleProduct() {
+        return this.$store.getters.getSingleProduct;
+      }
+    },
+
+    methods: {
+      getsingleproduct() {
+        this.$store.dispatch("singleProductbyId", this.$route.params.id);
+      },
+      addToCart() {
+        axios.post("/add-to-cart/", {
+          qty: this.qty,
+          id: this.get_SingleProduct.id
+        })
+          .then((response)=> {
+            console.log(response.data)
+            this.$router.push('/cart/')
+        })
+      }
+    },
+
+    mounted() {
+      this.getsingleproduct();
+    },
+
+    watch: {
+      $route(to, form) {
+        this.getsingleproduct();
+      }
     }
-  },
+  };
 
-    // methods:{
-    //     getSingleProbyId(){
-    //         this.$store.dispatch("singleProductbyId",this.$route.params.id)
-    //     }
-    // }, 
-    // watch: {
-    //     $route(to, form){
-    //         this.getSingleProbyId();
-    //     }
-    // }
-}
 </script>
 
 <style>
