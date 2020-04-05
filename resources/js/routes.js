@@ -7,6 +7,7 @@ import SingleProductComponent from "./components/public/SingleProduct";
 import CategoryProductComponent from "./components/public/CategoryProduct";
 import BrandProductComponent from "./components/public/BrandProduct";
 import CartComponent from "./components/public/Cart";
+// import CheckoutComponent from "./components/public/Checkout";
 
 export const routes = [
     {
@@ -44,5 +45,9 @@ export const routes = [
     {
         path: "/cart/",
         component: CartComponent
-    }
+    },
+    // {
+    //     path: "/checkout/",
+    //     component: CheckoutComponent
+    // }
 ];

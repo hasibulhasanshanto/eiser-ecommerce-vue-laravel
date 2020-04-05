@@ -23,7 +23,7 @@ class CartController extends Controller
             'tax' => 0
         ]);
 
-        return ['message'=>'ok'];
+        //return ['message'=>'ok'];
     }
     public function showCart(){
         $cartProducts = Cart::content();

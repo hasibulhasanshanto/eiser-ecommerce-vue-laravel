@@ -33,7 +33,7 @@
                   <th scope="col">
                     Total
                     <span class="total">{{ sum = 0 }} {{ total = 0 }}</span>
-                  </th> 
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -42,7 +42,7 @@
                     <div class="media">
                       <div class="d-flex">
                         <img
-                          :src="`storage/product/${cartProduct.options.image}`"
+                          :src="`/storage/product/${cartProduct.options.image}`"
                           alt
                           width="70"
                           height="70"
@@ -58,26 +58,29 @@
                   </td>
                   <td>
                     <form method="post" @submit.prevent="updateCart()">
-                                    <div class="product_count">
-                                        <input
-                                                type="text"
-                                                name="qty"
-                                                id="sst"
-                                                maxlength="12"
-                                                v-model="cartProduct.qty"
-                                                title="Quantity:"
-                                                class="input-text qty"
-                                        />
-                                    </div>
-                                    </form>
+                      <div class="product_count">
+                        <input
+                          type="text"
+                          name="qty"
+                          id="sst"
+                          maxlength="12"
+                          v-model="cartProduct.qty"
+                          title="Quantity:"
+                          class="input-text qty"
+                        />
+                      </div>
+                    </form>
                   </td>
                   <td>
                     <h5>Tk.{{ total = cartProduct.price*cartProduct.qty }}</h5>
                   </td>
                   <span class="total">{{ sum = sum+total }}</span>
                   <td>
-                                    <button class="btn btn-danger btn-sm" @click.prevent="deleteCart(cartProduct.rowId)">X</button>
-                                </td>
+                    <button
+                      class="btn btn-danger btn-sm"
+                      @click.prevent="deleteCart(cartProduct.rowId)"
+                    >X</button>
+                  </td>
                 </tr>
                 <tr class="bottom_button">
                   <td>
@@ -88,7 +91,7 @@
                   <td>
                     <div class="cupon_text">
                       <input type="text" placeholder="Coupon Code" />
-                      <a class="main_btn" href="#">Apply</a> 
+                      <a class="main_btn" href="#">Apply</a>
                     </div>
                   </td>
                 </tr>
@@ -100,17 +103,17 @@
                   </td>
                   <td>
                     <div class="shipping_box">
-                      <ul class="list">                        
+                      <ul class="list">
                         <li class="active">
                           <a href="#">Free Shipping</a>
-                        </li> 
-                        <li >
+                        </li>
+                        <li>
                           <a href="#">Delivery in Dhaka: Tk. 60</a>
                         </li>
                         <li>
                           <a href="#">Flat Rate: Tk. 100</a>
                         </li>
-                      </ul>   
+                      </ul>
                     </div>
                   </td>
                 </tr>
@@ -134,7 +137,7 @@
                     <h5>Tk.{{ sum }}</h5>
                   </td>
                 </tr>
-                
+
                 <tr class="out_button_area">
                   <td></td>
                   <td></td>
@@ -142,7 +145,7 @@
                   <td>
                     <div class="checkout_btn_inner">
                       <a class="gray_btn" href="#">Continue Shopping</a>
-                      <a class="main_btn" href="#">Proceed to checkout</a>
+                      <a href="/checkout" class="main_btn">Proceed to checkout</a>
                     </div>
                   </td>
                 </tr>
@@ -160,12 +163,12 @@
   export default {
     name: "cart",
 
-    data(){
-            return{
-                qty:'',
-                rowId:''
-            }
-        },
+    data() {
+      return {
+        qty: "",
+        rowId: ""
+      };
+    },
 
     mounted() {
       this.$store.dispatch("showCartProducts");
@@ -173,30 +176,30 @@
 
     computed: {
       showCartProduct() {
-        return this.$store.getters.getCartProduct; 
+        return this.$store.getters.getCartProduct;
       }
     },
-            methods:{
-            deleteCart(rowId){
-                axios.get('/delete-cart/'+rowId)
-                    .then((response)=>{
-                        //console.log(response.data.cartDelete)
-                        this.$store.dispatch("showCartProducts")
-                    })
-            },
-            updateCart(){
-                axios.post('`/update-cart/${this.$route.params.rowId}`')
-                    .then((response)=>{
-                        console.log(response.data)
-                        this.$router.push('/cart')
-                    })
-            }
-        },
-        watch:{
-            $click(to,from){
-                this.deleteCart();
-            }
-        }
+    methods: {
+      deleteCart(rowId) {
+        axios.get("/delete-cart/" + rowId).then(response => {
+          //console.log(response.data.cartDelete)
+          this.$store.dispatch("showCartProducts");
+        });
+      },
+      updateCart() {
+        axios
+          .post("`/update-cart/${this.$route.params.rowId}`")
+          .then(response => {
+            console.log(response.data);
+            this.$router.push("/cart");
+          });
+      }
+    },
+    watch: {
+      $click(to, from) {
+        this.deleteCart();
+      }
+    }
   };
 </script>
 

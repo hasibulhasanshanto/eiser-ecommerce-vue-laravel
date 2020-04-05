@@ -9,6 +9,6 @@ use App\Http\Controllers\Front\FrontController;
 class FrontController extends Controller
 {
     public function index(){
-        return view('frontend.pages.home');
+        return view('frontend.pages.master');
     }
 }

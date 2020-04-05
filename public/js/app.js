@@ -2730,12 +2730,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "cart",
   data: function data() {
     return {
-      qty: '',
-      rowId: ''
+      qty: "",
+      rowId: ""
     };
   },
   mounted: function mounted() {
@@ -2750,7 +2753,7 @@ __webpack_require__.r(__webpack_exports__);
     deleteCart: function deleteCart(rowId) {
       var _this = this;
 
-      axios.get('/delete-cart/' + rowId).then(function (response) {
+      axios.get("/delete-cart/" + rowId).then(function (response) {
         //console.log(response.data.cartDelete)
         _this.$store.dispatch("showCartProducts");
       });
@@ -2758,10 +2761,10 @@ __webpack_require__.r(__webpack_exports__);
     updateCart: function updateCart() {
       var _this2 = this;
 
-      axios.post('`/update-cart/${this.$route.params.rowId}`').then(function (response) {
+      axios.post("`/update-cart/${this.$route.params.rowId}`").then(function (response) {
         console.log(response.data);
 
-        _this2.$router.push('/cart');
+        _this2.$router.push("/cart");
       });
     }
   },
@@ -4576,8 +4579,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -59450,7 +59451,7 @@ var render = function() {
                             _c("img", {
                               attrs: {
                                 src:
-                                  "storage/product/" +
+                                  "/storage/product/" +
                                   cartProduct.options.image,
                                 alt: "",
                                 width: "70",
@@ -59707,7 +59708,7 @@ var staticRenderFns = [
             _vm._v("Continue Shopping")
           ]),
           _vm._v(" "),
-          _c("a", { staticClass: "main_btn", attrs: { href: "#" } }, [
+          _c("a", { staticClass: "main_btn", attrs: { href: "/checkout" } }, [
             _vm._v("Proceed to checkout")
           ])
         ])
@@ -62856,117 +62857,115 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "mainmenu" } }, [
-    _c("div", { staticClass: "header_area" }, [
-      _c("div", { staticClass: "main_menu" }, [
-        _c("div", { staticClass: "container" }, [
-          _c(
-            "nav",
-            { staticClass: "navbar navbar-expand-lg navbar-light w-100" },
-            [
-              _vm._m(0),
-              _vm._v(" "),
-              _vm._m(1),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "collapse navbar-collapse offset w-100",
-                  attrs: { id: "navbarSupportedContent" }
-                },
-                [
-                  _c("div", { staticClass: "row w-100 mr-0" }, [
-                    _c("div", { staticClass: "col-lg-7 pr-0" }, [
-                      _c(
-                        "ul",
-                        { staticClass: "nav navbar-nav center_nav pull-right" },
-                        [
-                          _c(
-                            "li",
-                            { staticClass: "nav-item" },
-                            [
-                              _c(
-                                "router-link",
-                                { staticClass: "nav-link", attrs: { to: "/" } },
-                                [_vm._v("Home")]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            { staticClass: "nav-item" },
-                            [
-                              _c(
-                                "router-link",
-                                {
-                                  staticClass: "nav-link",
-                                  attrs: { to: "/shop" }
-                                },
-                                [_vm._v("Shop")]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            { staticClass: "nav-item" },
-                            [
-                              _c(
-                                "router-link",
-                                {
-                                  staticClass: "nav-link",
-                                  attrs: { to: "/blog" }
-                                },
-                                [_vm._v("Blog")]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            { staticClass: "nav-item" },
-                            [
-                              _c(
-                                "router-link",
-                                {
-                                  staticClass: "nav-link",
-                                  attrs: { to: "/track" }
-                                },
-                                [_vm._v("Track Order")]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            { staticClass: "nav-item" },
-                            [
-                              _c(
-                                "router-link",
-                                {
-                                  staticClass: "nav-link",
-                                  attrs: { to: "/contact" }
-                                },
-                                [_vm._v("Contact")]
-                              )
-                            ],
-                            1
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(2)
-                  ])
-                ]
-              )
-            ]
-          )
-        ])
+    _c("div", { staticClass: "main_menu" }, [
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "nav",
+          { staticClass: "navbar navbar-expand-lg navbar-light w-100" },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "collapse navbar-collapse offset w-100",
+                attrs: { id: "navbarSupportedContent" }
+              },
+              [
+                _c("div", { staticClass: "row w-100 mr-0" }, [
+                  _c("div", { staticClass: "col-lg-7 pr-0" }, [
+                    _c(
+                      "ul",
+                      { staticClass: "nav navbar-nav center_nav pull-right" },
+                      [
+                        _c(
+                          "li",
+                          { staticClass: "nav-item" },
+                          [
+                            _c(
+                              "router-link",
+                              { staticClass: "nav-link", attrs: { to: "/" } },
+                              [_vm._v("Home")]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "li",
+                          { staticClass: "nav-item" },
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "nav-link",
+                                attrs: { to: "/shop" }
+                              },
+                              [_vm._v("Shop")]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "li",
+                          { staticClass: "nav-item" },
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "nav-link",
+                                attrs: { to: "/blog" }
+                              },
+                              [_vm._v("Blog")]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "li",
+                          { staticClass: "nav-item" },
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "nav-link",
+                                attrs: { to: "/track" }
+                              },
+                              [_vm._v("Track Order")]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "li",
+                          { staticClass: "nav-item" },
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "nav-link",
+                                attrs: { to: "/contact" }
+                              },
+                              [_vm._v("Contact")]
+                            )
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(2)
+                ])
+              ]
+            )
+          ]
+        )
       ])
     ])
   ])
@@ -80258,6 +80257,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+ // import CheckoutComponent from "./components/public/Checkout";
 
 var routes = [{
   path: "/",
@@ -80286,7 +80286,11 @@ var routes = [{
 }, {
   path: "/cart/",
   component: _components_public_Cart__WEBPACK_IMPORTED_MODULE_8__["default"]
-}];
+} // {
+//     path: "/checkout/",
+//     component: CheckoutComponent
+// }
+];
 
 /***/ }),
 

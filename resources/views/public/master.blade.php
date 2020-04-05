@@ -29,14 +29,13 @@
 <body>
     <div id="app">
         <!--================Header Menu Area =================-->
-        @include('frontend.includes.navbar')
+        @include('frontend.includes.header')
         <!--================Header Menu Area =================-->
 
-
-        @yield('content')
+        <master-main></master-main>
 
         <!--================ start footer Area  =================-->
-        @include('frontend.includes.footer')
+        <footer-main></footer-main>
         <!--================ End footer Area  =================-->
     </div>
     <!-- Optional JavaScript -->

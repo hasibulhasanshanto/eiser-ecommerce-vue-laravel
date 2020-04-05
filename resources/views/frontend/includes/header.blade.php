@@ -1,4 +1,5 @@
-<div class="header">
+<!--================Header Menu Area =================-->
+<header class="header_area">
     <div class="top_menu">
         <div class="container">
             <div class="row">
@@ -37,4 +38,6 @@
             </div>
         </div>
     </div>
-</div>
+    <header-main></header-main>
+</header>
+<!--================Header Menu Area =================-->

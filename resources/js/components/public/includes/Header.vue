@@ -1,6 +1,5 @@
 <template>
-  <div id="mainmenu">
-    <div class="header_area">
+  <div id="mainmenu"> 
       <div class="main_menu">
         <div class="container">
           <nav class="navbar navbar-expand-lg navbar-light w-100">
@@ -74,8 +73,7 @@
             </div>
           </nav>
         </div>
-      </div>
-    </div>
+      </div> 
   </div>
 </template>
 

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
     public function index(){
-        return view('frontend.pages.home');
+        return view('public.master');
     }
     
     public function getFeaturesProduct(){

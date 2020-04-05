@@ -19,6 +19,17 @@ Route::get('/show-cart/', 'CartController@showCart');
 Route::get('/delete-cart/{id}','CartController@deleteCart');
 Route::post('/update-cart/{rowId}','CartController@updateCart');
 
+
+Route::get('/checkout/','CheckOutController@checkout');
+
+Route::post('/register-customer/','CustomerController@registerCustomer')->name('costomer.registration');
+Route::get('/shipping/','CustomerController@shippingForm');
+Route::post('/checkout-shipping/','CustomerController@checkoutShipping')->name('checkout-shipping');
+Route::get('/payment','CustomerController@paymentForm');
+Route::post('/checkout/order/confirm','CustomerController@confirmOrder')->name('confirm-order');
+
+
+
 //Auth Routes user
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
