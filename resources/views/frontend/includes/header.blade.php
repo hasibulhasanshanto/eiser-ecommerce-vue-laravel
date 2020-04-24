@@ -17,21 +17,30 @@
                                     gift card
                                 </a>
                             </li>
+                            @if (Session::get('customerId'))
                             <li>
-                                <a href="tracking.html">
-                                    track order
+                                <a>
+                                    Welcome {{ Session::get('customerName') }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('login')}}">
+                                <a href="#">
+                                    Logout
+                                </a>
+                            </li>
+                            @else
+                            <li>
+                                <a href="{{ route('checkout')}}">
                                     Login
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('register')}}">
+                                <a href="{{ route('checkout')}}">
                                     Register
                                 </a>
                             </li>
+                            @endif
+
                         </ul>
                     </div>
                 </div>

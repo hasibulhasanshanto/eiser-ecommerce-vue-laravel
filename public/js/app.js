@@ -79252,8 +79252,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('footer-main', __webpack_re
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: _routes__WEBPACK_IMPORTED_MODULE_3__["routes"],
   // short for `routes: routes`
-  mode: 'hash' //mode: 'history'
-
+  //mode: 'hash'
+  mode: 'history'
 });
 var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store(_store_store_js__WEBPACK_IMPORTED_MODULE_4__["default"]);
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({

@@ -17,21 +17,35 @@
                                     gift card
                                 </a>
                             </li>
+                            @if (Session::get('customerId'))
                             <li>
-                                <a href="tracking.html">
-                                    track order
+                                <a>
+                                    Welcome {{ Session::get('customerName') }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('login')}}">
+                                <a href="{{ route('logout-customer') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    Logout
+
+                                    <form id="logout-form" action="{{ route('logout-customer') }}" method="POST"
+                                        style="display: none;">
+                                        @csrf
+                                    </form>
+                                </a>
+                            </li>
+                            @else
+                            <li>
+                                <a href="{{ route('checkout')}}">
                                     Login
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('register')}}">
+                                <a href="{{ route('checkout')}}">
                                     Register
                                 </a>
                             </li>
+                            @endif
                         </ul>
                     </div>
                 </div>

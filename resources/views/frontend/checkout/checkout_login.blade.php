@@ -30,16 +30,27 @@ Eiser Checkout
                 <div class="card">
                     <div class="card-header">
                         <h3>Login extisting account!</h3>
+                        @if(Session::has('message'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ Session::get('message') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @endif
+
                     </div>
                     <div class="card-body">
-                        <form method="post">
+                        <form action="{{ route('costomer.login') }}" method="post">
+                            @csrf
                             <div class="form-group">
                                 <label for="emailAddress">Email address</label>
                                 <input type="text" class="form-control" id="emailAddress" name="email" />
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Password</label>
-                                <input type="text" class="form-control" id="exampleInputPassword1" name="password" />
+                                <input type="password" class="form-control" id="exampleInputPassword1"
+                                    name="password" />
                             </div>
                             <button type="submit" class="btn btn-primary">Login</button>
                         </form>

@@ -20,15 +20,20 @@ Route::get('/delete-cart/{id}','CartController@deleteCart');
 Route::post('/update-cart/{rowId}','CartController@updateCart');
 
 
-Route::get('/checkout/','CheckOutController@checkout');
+Route::get('/checkout/','CheckOutController@checkout')->name('checkout');
 
 Route::post('/register-customer/','CustomerController@registerCustomer')->name('costomer.registration');
+Route::post('/login-customer/','CustomerController@loginCustomer')->name('costomer.login');
+Route::post('/logout-customer/','CustomerController@logoutCustomer')->name('logout-customer');
 Route::get('/shipping/','CustomerController@shippingForm');
 Route::post('/checkout-shipping/','CustomerController@checkoutShipping')->name('checkout-shipping');
-Route::get('/payment','CustomerController@paymentForm');
-Route::post('/checkout/order/confirm','CustomerController@confirmOrder')->name('confirm-order');
+Route::get('/payment/','CustomerController@paymentForm');
+Route::post('/order-confirm/','CustomerController@confirmOrder')->name('confirm-order');
 
+Route::get('/order-success/','CheckOutController@orderSuccess')->name('order-success');
 
+Route::get('stripe', 'StripePaymentController@stripe');
+Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
 
 //Auth Routes user
 Auth::routes();

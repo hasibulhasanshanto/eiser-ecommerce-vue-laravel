@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use Mail;
+use App\Order;
+use App\Payment;
 use App\Customer;
 use App\Shipping;
+use App\OrderDetails;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CustomerController extends Controller
 {
@@ -46,6 +50,30 @@ class CustomerController extends Controller
 
         return redirect('/shipping');
 
+    } 
+
+
+    public function loginCustomer(Request $request){
+        $customer = Customer::where('email', $request->email)->first();
+        if ($customer) {
+            if (password_verify($request->password, $customer->password)) {
+                Session::put('customerId', $customer->id);
+                Session::put('customerName', $customer->full_name);
+
+                return redirect('/shipping');
+            } else{
+                return back()->with('message', 'Invalid Email or Password');
+            }
+        } else{
+            return redirect()->back()->with('message', 'Invalid Email or Password');
+        }
+        
+    }
+    public function logoutCustomer(Request $request){
+        Session::forget('customerId');
+        Session::forget('customerName');
+
+        return redirect('/checkout');        
     }
 
     public function shippingForm(){
@@ -70,5 +98,61 @@ class CustomerController extends Controller
         return view('frontend.checkout.payment');
 
         //return Cart::subtotal();
+    }
+
+    public function confirmOrder(Request $request){
+        $paymentType = $request->payment_info;
+        if($paymentType == 'cash'){
+            $order = new Order();
+            $order->customer_id = Session::get('customerId');
+            $order->shipping_id = Session::get('shippingId');
+            $order->order_total = Cart::subtotal();
+            $order->save();
+
+            $payment = new Payment();
+            $payment->order_id = $order->id;
+            $payment->payment_info = $paymentType;
+            $payment->save();
+
+            $cartProducts = Cart::content();
+            foreach($cartProducts as $cartProduct){
+                $orderDetails = new OrderDetails();
+                $orderDetails->order_id = $order->id;
+                $orderDetails->product_id = $cartProduct->id;
+                $orderDetails->product_name = $cartProduct->name;
+                $orderDetails->product_price = $cartProduct->price;
+                $orderDetails->product_quantity = $cartProduct->qty;
+                $orderDetails->save();
+            }
+            Cart::destroy();
+
+            return redirect('/order-success');
+        }
+        if($paymentType == 'stripe'){
+            $order = new Order();
+            $order->customer_id = Session::get('customerId');
+            $order->shipping_id = Session::get('shippingId');
+            $order->order_total = Cart::subtotal();
+            $order->save();
+
+            $payment = new Payment();
+            $payment->order_id = $order->id;
+            $payment->payment_info = $paymentType;
+            $payment->save();
+
+            $cartProducts = Cart::content();
+            foreach($cartProducts as $cartProduct){
+                $orderDetails = new OrderDetails();
+                $orderDetails->order_id = $order->id;
+                $orderDetails->product_id = $cartProduct->id;
+                $orderDetails->product_name = $cartProduct->name;
+                $orderDetails->product_price = $cartProduct->price;
+                $orderDetails->product_quantity = $cartProduct->qty;
+                $orderDetails->save();
+            }
+            Cart::destroy();
+
+            return redirect('/stripe');
+        }
     }
 }

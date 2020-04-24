@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/vendors/nice-select/css/nice-select.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/vendors/animate-css/animate.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/vendors/jquery-ui/jquery-ui.css') }}" />
+    @stack('css')
     <!-- main css -->
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}" />
@@ -45,6 +46,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('frontend/js/popper.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
+    @stack('js')
     <script src="{{ asset('frontend/js/stellar.js') }}"></script>
     <script src="{{ asset('frontend/vendors/lightbox/simpleLightbox.min.js') }}"></script>
     <script src="{{ asset('frontend/vendors/nice-select/js/jquery.nice-select.min.js') }}"></script>
