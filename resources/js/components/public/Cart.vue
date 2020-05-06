@@ -10,8 +10,8 @@
               <p>Very us move be blessed multiply night</p>
             </div>
             <div class="page_link">
-              <a href="index.html">Home</a>
-              <a href="cart.html">Cart</a>
+              <a href="/">Home</a>
+              <a href="/cart">Cart</a>
             </div>
           </div>
         </div>
@@ -60,13 +60,12 @@
                     <form method="post" @submit.prevent="updateCart()">
                       <div class="product_count">
                         <input
-                          type="text"
-                          name="qty"
-                          id="sst"
+                          type="number"
+                          name="qty" 
+                          min="1"
                           maxlength="12"
-                          v-model="cartProduct.qty"
-                          title="Quantity:"
-                          class="input-text qty"
+                          v-model="cartProduct.qty" 
+                          class="input-text qty input-qty"
                         />
                       </div>
                     </form>
@@ -84,7 +83,11 @@
                 </tr>
                 <tr class="bottom_button">
                   <td>
-                    <a class="gray_btn" href="#">Update Cart</a>
+                    <button
+                      class="gray_btn"
+                      @submit.prevent="updateCart()"
+                    >Update Cart</button>
+                    <!-- <a class="gray_btn" href="#">Update Cart</a> -->
                   </td>
                   <td></td>
                   <td></td>
@@ -144,7 +147,7 @@
                   <td></td>
                   <td>
                     <div class="checkout_btn_inner">
-                      <a class="gray_btn" href="#">Continue Shopping</a>
+                      <a class="gray_btn" href="/">Continue Shopping</a>
                       <a href="/checkout" class="main_btn">Proceed to checkout</a>
                     </div>
                   </td>
@@ -190,14 +193,16 @@
         axios
           .post("`/update-cart/${this.$route.params.rowId}`")
           .then(response => {
-            console.log(response.data);
+            //console.log(response.data);
             this.$router.push("/cart");
+            this.$store.dispatch("showCartProducts");
           });
       }
     },
     watch: {
       $click(to, from) {
         this.deleteCart();
+        this.updateCart();
       }
     }
   };
@@ -209,4 +214,8 @@
     overflow: hidden;
     margin-left: -120px;
   }
+  .input-qty {
+  width: 60px;
+  float: right
+}
 </style>

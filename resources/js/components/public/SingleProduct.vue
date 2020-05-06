@@ -89,28 +89,13 @@
                 <div class="product_count">
                   <label for="qty">Quantity:</label>
                   <input
-                    type="text"
+                   type="number"
                     name="qty"
                     maxlength="12"
-                    value="1"
+                    min="1" 
                     v-model="qty"
-                    class="input-text qty"
-                  />
-                  
-                  <button
-                    onclick="let result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                    class="increase items-count"
-                    type="button"
-                  >
-                    <i class="lnr lnr-chevron-up"></i>
-                  </button>
-                  <button
-                    onclick="let result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                    class="reduced items-count"
-                    type="button"
-                  >
-                    <i class="lnr lnr-chevron-down"></i>
-                  </button>
+                    class="input-text qty input-qty"
+                  /> 
                   <input
                     type="hidden"
                     name="id"  
@@ -625,7 +610,7 @@
 
     data() {
       return {
-        qty: '',
+        qty: '1',
         id: ''
       };
     },
@@ -666,5 +651,8 @@
 </script>
 
 <style>
-
+.input-qty {
+  width: 60px;
+  float: right
+}
 </style>

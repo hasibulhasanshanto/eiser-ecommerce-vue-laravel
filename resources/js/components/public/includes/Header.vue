@@ -53,6 +53,7 @@
                     <li class="nav-item">
                       <a href="#" class="icons">
                         <i class="ti-shopping-cart"></i>
+                        <span class="badge">0</span>
                       </a>
                     </li>
 

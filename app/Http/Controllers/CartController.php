@@ -39,9 +39,12 @@ class CartController extends Controller
         ],200);
     }
     public function updateCart(Request $request,$rowId){
-        Cart::update($rowId, $request->qty);
+        $cartUpdate = Cart::update($rowId, $request->qty);
+        return response()->json([
+            'cartUpdate' => $cartUpdate
+        ],200);
 
-        return ['message'=>'ok'];
+        //return ['message'=>'ok'];
 
     }
 }

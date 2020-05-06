@@ -24,8 +24,14 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{ route('logout-customer') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
                                     Logout
+
+                                    <form id="logout-form" action="{{ route('logout-customer') }}" method="POST"
+                                        style="display: none;">
+                                        @csrf
+                                    </form>
                                 </a>
                             </li>
                             @else
