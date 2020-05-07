@@ -53,18 +53,18 @@ All Products
 
         @if(Session::has('flash_message'))
         <div class="alert alert-success alert-dismissible fade show mx-4 mt-4" role="alert">
-          <strong>Success!</strong> {{ Session::get('flash_message') }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+            <strong>Success!</strong> {{ Session::get('flash_message') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
         @endif
         @if(Session::has('delete_message'))
         <div class="alert alert-danger alert-dismissible fade show mx-4 mt-4" role="alert">
-          <strong>Success!</strong> {{ Session::get('delete_message') }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+            <strong>Success!</strong> {{ Session::get('delete_message') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
         @endif
 
@@ -80,7 +80,7 @@ All Products
                         <th>Price</th>
                         <th>Image</th>
                         <th>Status</th>
-                        <th class="text-center">Action</th>
+                        <th class="text-center" width="120">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -202,12 +202,7 @@ All Products
 @push('scripts')
 <script>
     $(document).ready(function () {
-        var table = $('#example').DataTable({
-            columnDefs: [{
-                "width": "100px",
-                "targets": [5]
-            }]
-        });
+        var table = $('#example').DataTable();
     });
 
 </script>

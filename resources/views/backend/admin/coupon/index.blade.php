@@ -69,7 +69,7 @@ Coupon Code
                         <th>Type</th>
                         <th>Expire On</th>
                         <th class="text-center">Status</th>
-                        <th class="text-center">Action</th>
+                        <th class="text-center" width="100">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -133,12 +133,7 @@ Coupon Code
 @push('scripts')
 <script>
     $(document).ready(function () {
-        var table = $('#example').DataTable({
-            columnDefs: [{
-                "width": "100px",
-                "targets": [5]
-            }]
-        });
+        var table = $('#example').DataTable();
     });
 
 </script>

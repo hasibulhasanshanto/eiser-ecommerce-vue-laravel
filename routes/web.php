@@ -52,6 +52,8 @@ Route::group(['as'=>'admin.','prefix'=>'dashboard','namespace'=>'Admin','middlew
         Route::resource('user', 'UserController');
         Route::resource('brand', 'BrandController');
         Route::resource('coupon', 'CouponController');
+        Route::get('order', 'OrderController@index')->name('all.orders');
+        Route::get('order/details/{id}', 'OrderController@show')->name('order.show');
     });
 //Vendor Admin Routes
     Route::group(['middleware' => 'VendorMiddleware'], function() {

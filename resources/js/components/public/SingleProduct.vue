@@ -72,10 +72,25 @@
               </h2>
               <ul class="list">
                 <li>
-                  <a class="active" href="#">
+                  <!-- <a class="active" href="#">
+                    <span>Brand</span>
+                    : {{ get_SingleProduct.brand.br_name }}
+                  </a> -->                  
+                  <router-link class="active" :to="`/brand-products/${get_SingleProduct.brand.id}`">
+                  <span>Brand </span>
+                  : {{  get_SingleProduct.brand.br_name }}
+                  </router-link>
+                </li>
+                <li>
+                  <!-- <a class="active" href="#">
+                  : {{ get_SingleProduct.category.cat_name }}
+                  </a> -->
+                    
+                    <router-link class="active" :to="`/category-product/${get_SingleProduct.category.id}`" >
                     <span>Category</span>
-                    : {{ get_SingleProduct.pro_category }}
-                  </a>
+                      : {{ get_SingleProduct.category.cat_name }}
+                    </router-link>
+                  
                 </li>
                 <li>
                   <a href="#">
@@ -89,18 +104,14 @@
                 <div class="product_count">
                   <label for="qty">Quantity:</label>
                   <input
-                   type="number"
+                    type="number"
                     name="qty"
                     maxlength="12"
-                    min="1" 
+                    min="1"
                     v-model="qty"
                     class="input-text qty input-qty"
-                  /> 
-                  <input
-                    type="hidden"
-                    name="id"  
-                    v-model="get_SingleProduct.id"
                   />
+                  <input type="hidden" name="id" v-model="get_SingleProduct.id" />
                 </div>
                 <div class="card_area">
                   <input type="submit" class="main_btn" value="Add to Cart" />
@@ -605,54 +616,59 @@
 </template>
 
 <script>
-  export default {
-    name: "singleproduct",
+export default {
+  name: "singleproduct",
 
-    data() {
-      return {
-        qty: '1',
-        id: ''
-      };
+  data() {
+    return {
+      qty: "1",
+      id: ""
+    };
+  },
+
+  computed: {
+    get_SingleProduct() {
+      return this.$store.getters.getSingleProduct;
+    }
+  },
+
+  methods: {
+    getsingleproduct() {
+      this.$store.dispatch("singleProductbyId", this.$route.params.id);
     },
-
-    computed: {
-      get_SingleProduct() {
-        return this.$store.getters.getSingleProduct;
-      }
-    },
-
-    methods: {
-      getsingleproduct() {
-        this.$store.dispatch("singleProductbyId", this.$route.params.id);
-      },
-      addToCart() {
-        axios.post("/add-to-cart/", {
+    addToCart() {
+      axios
+        .post("/add-to-cart/", {
           qty: this.qty,
           id: this.get_SingleProduct.id
         })
-          .then((response)=> {
-            console.log(response.data)
-            this.$router.push('/cart/')
-        })
-      }
-    },
+        .then(response => {
+          console.log(response.data);
+          this.$router.push("/cart/");
 
-    mounted() {
-      this.getsingleproduct();
-    },
-
-    watch: {
-      $route(to, form) {
-        this.getsingleproduct();
-      }
+          Toast.fire({
+            icon: "success",
+            title: "Added to cart successfully!"
+          });
+        });
     }
-  };
+  },
 
+  mounted() {
+    this.getsingleproduct();
+  },
+
+  watch: {
+    $route(to, form) {
+      this.getsingleproduct();
+    }
+  }
+};
 </script>
 
 <style>
 .input-qty {
   width: 60px;
-  float: right
+  float: right;
 }
 </style>

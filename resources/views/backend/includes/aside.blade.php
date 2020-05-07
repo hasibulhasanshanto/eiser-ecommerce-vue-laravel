@@ -106,6 +106,24 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.all.orders')}}" class="nav-link">
+                        <i class="nav-icon fas fa-money-check-alt"></i>
+                        <p>
+                            Manage Order
+                            <span class="right badge badge-danger">0</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-money-check-alt"></i>
+                        <p>
+                            Subscriber
+                            <span class="right badge badge-danger">0</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-layer-group"></i>
                         <p>

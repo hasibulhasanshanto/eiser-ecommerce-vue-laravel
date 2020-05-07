@@ -62,10 +62,10 @@ class ProductController extends Controller
     }
     public function singleProduct($id){
 
-        $singleProduct = Product::where('id', $id)->first();   
+        $singleProduct = Product::with('category:id,cat_name', 'brand:id,br_name')->where('id', $id)->first(); 
         //return $singleProduct; 
         return  response()->json([
-            'singleProduct' => $singleProduct
+            'singleProduct' => $singleProduct 
         ]);
     }
 
@@ -74,12 +74,7 @@ class ProductController extends Controller
             ->join('categories','products.pro_category','categories.id')
             ->select('products.*', 'categories.cat_name')
             ->where('pro_category', $id)
-            ->get();
-        // $catProducts = DB::table('products as pro') 
-        //     ->join('categories as categories', 'categories.id', '=', 'pro.pro_category')
-        //     ->where('pro_category', $id)
-        //     ->get();
-        //return $catProducts;
+            ->get(); 
         return  response()->json([
             'catProducts' => $catProducts
         ]);
